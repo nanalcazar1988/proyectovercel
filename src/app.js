@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import {join, dirname } from 'path'
 import {fileURLToPath} from 'url'
 import {engine} from 'express-handlebars'
+import companyRoutes from "./routes/company.routes.js"
 
 const app = express()
 const __dirname = dirname(fileURLToPath(import.meta.url)); 
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
     res.render('index')
 })
+
+app.use(companyRoutes);
 
 app.use(express.static(join(__dirname,'public')))
 export default app
